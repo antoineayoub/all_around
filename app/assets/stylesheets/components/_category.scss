@@ -10,10 +10,17 @@
 }
 .category_select:hover {
   background: darken($red, 20%);
+  .category {
+    text-decoration: none;
+  }
 }
 .category:hover {
   .arabic {
     font-size: 35px;
+    text-decoration: none;
+  }
+  a {
+    text-decoration: none;
   }
 }
 

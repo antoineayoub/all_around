@@ -14,11 +14,13 @@ class RequestsController < ApplicationController
   end
 
   def new
+    @category = params[:category]
     @request = Request.new
   end
 
   def create
     @request = Request.new(request_params)
+    @request.refugee = current_user
     if @request.save
       redirect_to requests_path
     else

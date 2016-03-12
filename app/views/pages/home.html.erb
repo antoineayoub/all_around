@@ -5,13 +5,14 @@
   </div>
 </h1>
 
-
 <div class="container text-center">
   <div class="row">
     <div class="col-xs-6 col-sm-4 col-sm-offset-2 category">
-      <i class="fa fa-graduation-cap fa-5x category_select"></i>
-      <div class="arabic">تحدث الفرنسية</div>
-      <div class="french">parler français</div>
+      <%= link_to new_request_path(category: "french") do %>
+        <i class="fa fa-graduation-cap fa-5x category_select"></i>
+        <div class="arabic">تحدث الفرنسية</div>
+        <div class="french">parler français</div>
+      <% end %>
     </div>
     <div class="col-xs-6 col-sm-4 category">
       <i class="fa fa-bus fa-5x category_select"></i>
