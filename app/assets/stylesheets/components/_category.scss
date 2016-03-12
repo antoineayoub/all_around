@@ -11,3 +11,22 @@
 .category_select:hover {
   background: darken($red, 20%);
 }
+.category:hover {
+  .arabic {
+    font-size: 35px;
+  }
+}
+
+.arabic {
+  color: #EE5F5B;
+  font-size: 30px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.french {
+  color: #C9C9C9;
+  font-size: 20px;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
