@@ -1,18 +1,12 @@
 class RequestsController < ApplicationController
 
   def index
-    # Conversation means request pending or solved
-    @conversations = current_user.conversations
-    if params[:request_id]
-      @selected_conversation = @conversations.find(params[:request_id])
-    else
-      @selected_conversation = @conversations.first
-    end
-    if @selected_conversation
-      @unread_messages = @selected_conversation.unread_messages(current_user)
-      @unread_messages.each { |message| message.mark_as_read }
-      @unread_conversations_count = current_user.unread_conversations_count
-    end
+
+   @request = Request.new
+   @requests = current_user.requests.select do |request|
+      request.persisted?
+   end
+   @requests.sort_by! &:created_at
   end
 
   def tickets
@@ -25,6 +19,7 @@ class RequestsController < ApplicationController
       redirect_to requests_path
     end
   end
+
 
   def conversations
     # Conversation means request pending or solved
@@ -48,20 +43,21 @@ class RequestsController < ApplicationController
     end
   end
 
-  def new
-    @category = params[:category]
-    @request = Request.new
-  end
-
   def create
     @request = Request.new(request_params)
     @request.refugee = current_user
     @request.status = 'not assigned'
     if @request.save
-      redirect_to requests_path
+      respond_to do |format|
+        format.html { redirect_to requests_path }
+        format.js
+      end
     else
-      @category = params[:request][:category]
-      render :new
+      respond_to do |format|
+        @category = params[:request][:category]
+        format.html { render requests_path }
+        format.js  # <-- idem
+      end
     end
   end
 
