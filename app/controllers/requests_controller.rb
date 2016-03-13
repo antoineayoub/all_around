@@ -13,12 +13,16 @@ class RequestsController < ApplicationController
       @unread_messages.each { |message| message.mark_as_read }
       @unread_conversations_count = current_user.unread_conversations_count
     end
+  end
 
+  def tickets
     # We then listed not assigned
     if current_user.category == "volunteer"
-      @not_assigned_requests = Request.where(status: "not_assigned")
+      @solved_tickets = current_user.tickets.where(status: "solved")
+      @pending_tickets = current_user.tickets.where(status: "pending")
+      @not_assigned_tickets = Request.where(status: "not_assigned")
     else
-      @not_assigned_requests = current_user.requests.where(status: "not_assigned")
+      redirect_to requests_path
     end
   end
 
@@ -61,9 +65,22 @@ class RequestsController < ApplicationController
     end
   end
 
+  def update
+    @request = Request.find(params[:id])
+    @refugee_name = @request.refugee.first_name
+    if @request.update(request_params)
+      if params[:request][:status] == 'pending'
+        @first_message = Message.create(request: @request, user: current_user, content: "Hi #{@refugee_name}, I'm taking your request, I'll be back to you soon.")
+      end
+      redirect_to conversations_path
+    else
+      render :index, flash: "Error when updating #{@refugee_name}'s request!"
+    end
+  end
+
   private
 
   def request_params
-    params.require(:request).permit(:content, :category)
+    params.require(:request).permit(:content, :category, :status)
   end
 end

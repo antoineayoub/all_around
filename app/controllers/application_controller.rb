@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    resource.category == 'volunteer' ? path = new_request_path : path = new_request_path
+    resource.category == 'volunteer' ? path = select_tickets_requests_path : path = new_request_path
     return path
   end
 end

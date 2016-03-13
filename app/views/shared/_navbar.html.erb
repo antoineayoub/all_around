@@ -51,7 +51,11 @@
         </div>
 
       <!-- Button (call-to-action) -->
-      <%= link_to t(".top_call_to_action", default: "Ask a question"), new_request_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+      <% if current_user.category == 'volunteer' %>
+        <%= link_to t(".top_call_to_action", default: "See requests"), select_tickets_requests_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+      <% else %>
+        <%= link_to t(".top_call_to_action", default: "Ask a question"), new_request_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+      <% end %>
     </div>
 
     <!-- Dropdown list appearing on mobile only -->
