@@ -48,7 +48,7 @@ var Inbox = React.createClass({
     var that = this
     $.ajax({
       type: 'GET',
-      url: Routes.root_path({format: 'json', request_id: id}),
+      url: Routes.requests_path({format: 'json', request_id: id}),
       success: function(data) {
         that.setState({
           conversations: data.conversations,
