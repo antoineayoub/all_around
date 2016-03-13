@@ -1,5 +1,5 @@
 class Request < ActiveRecord::Base
-  CATEGORIES = ["french", "transport", "food", "health", "hotel", "welcome", "drink", "legal"]
+  CATEGORIES = ["graduation-cap", "bus", "cutlery", "bed", "medkit", "shopping-cart", "futbol-o", "balance-scale"]
   belongs_to :refugee, class_name: 'User', foreign_key: :refugee_id
   belongs_to :volunteer, class_name: 'User', foreign_key: :volunteer_id
   validates :category, inclusion: {in: CATEGORIES}
