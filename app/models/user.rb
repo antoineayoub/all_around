@@ -10,23 +10,24 @@ class User < ActiveRecord::Base
   has_many :requests, class_name: 'Request', foreign_key: :refugee_id
   has_many :tickets, class_name: 'Request', foreign_key: :volunteer_id
   has_many :user_languages
+  has_many :languages, through: :user_languages
 
   validates :category, presence: true
   validates :email, presence: true, uniqueness: true
   validates :first_name, :last_name, presence: true
-  validate :validate_refugee_fields, on: [:create]
-  before_create :set_category
+  validate :validate_specific_fields, on: [:create]
 
   accepts_nested_attributes_for :user_languages, allow_destroy: true, reject_if: :all_blank
 
-  def validate_refugee_fields
+  def validate_specific_fields
+    raise
     if category == 'refugee'
-      errors[:base] << ("Must set age") unless age
-      errors[:base] << ("Must set gender") unless gender
-      errors[:base] << ("Must set address") unless address
-      errors[:base] << ("Must set country_of_origin") unless COUNTRIES.include?(country_of_origin)
-      errors[:base] << ("Must set arrival_date") unless ['male', 'female'].include?(arrival_date)
-      errors[:base] << ("Must set phone") unless phone #
+      errors[:base] << "Must set age" unless age
+      errors[:base] << "Must set gender" unless gender
+      errors[:base] << "Must set address" unless address
+      errors[:base] << "Must set country_of_origin" unless COUNTRIES.include?(country_of_origin)
+      errors[:base] << "Must set arrival_date" unless ['male', 'female'].include?(arrival_date)
+      errors[:base] << "Must set phone" unless phone #
     end
   end
 

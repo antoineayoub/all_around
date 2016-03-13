@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require jquery_nested_form
+//= require select2
 //= require react
 //= require react_ujs
 //= require components

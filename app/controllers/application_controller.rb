@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
+  layout 'application'
   protect_from_forgery with: :exception
 
   before_action :authenticate_user! #NB => TO CHANGE
@@ -14,4 +15,8 @@ class ApplicationController < ActionController::Base
     }
   end
 
+  def after_sign_in_path_for(resource)
+    resource.category == 'volunteer' ? path = new_request_path : path = new_request_path
+    return path
+  end
 end
