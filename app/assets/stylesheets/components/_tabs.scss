@@ -1,15 +1,16 @@
 .tabs {
   background: none;
   display: flex;
-  padding: 10px 10px 0 10px
+  padding: 10px 10px 0 10px;
+  color: black;
 }
 .tabs a {
-  color: white;
+  color: black;
 }
 .tabs a:hover {
   cursor: pointer;
   text-decoration: none;
-  opacity: 0.8;
+  background-color: #fbfbfb;
 }
 .tabs h3 {
   font-size: 17px;
@@ -17,11 +18,11 @@
   margin-top: 0;
 }
 .tabs p {
-  opacity: 0.5;
+  // opacity: 0.5;
   margin-bottom: 0;
 }
 .tab {
-  background: #756A66;
+  background: white;
   flex: 1 0 25%;
   text-align: center;
   padding: 20px 0;
@@ -35,8 +36,15 @@
   border-radius: 0 10px 0 0;
 }
 .tab.active {
-  background: white;
-  color: black;
+  background: #ce1a15;
+  color: white;
+  h3 {
+    color: white;
+    font-weight: bold;
+  }
+  &:hover {
+    background: #ce1a15;
+  }
 }
 
 .tab-content{
