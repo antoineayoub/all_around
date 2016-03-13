@@ -1,6 +1,48 @@
-<%= content_for :title do %>
-  <%= current_user.unread_conversations_count > 0 ? "(#{@unread_conversations_count}) Inbox" : "Inbox" %>
-<% end %>
+<%= render 'categories' %>
+<div id="post" class="btn btn-primary">Category</div>
+<div hidden id="request" class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <div class="form-banner">
+        <div class="header-request">
+          <h1>TELL US WHAT YOU NEED ?</h1>
+          <i class="fa fa-2x category_avatar"></i>
+        </div>
+        <div id="wrapper-form">
+          <%= simple_form_for(@request,remote: true) do |f| %>
+            <%= f.input :content, label: false,autofocus: true, placeholder: "I need to know ... \n ... أحتاج أن أعلم", style: "line-height: 100px;" %>
+            <%= f.input :category, as: :hidden%>
+            <%= f.button :submit, "post request", style: "width: 100%;line-height: 50px;", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+        <h2><%= pluralize @requests.size, "request" %></h2>
+      </div>
+      <div id="requests">
+        <% if @requests.blank? %>
+          You don't ask anyhing yet.
+        <% else %>
+          <% @requests.each do |request| %>
+            <%= render 'show', request: request%>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= react_component "Inbox",
-    render(template: 'requests/index.json.jbuilder') %>
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $('.category').on( 'click', function(){
+      if ( $( "#request" ).is( ":hidden" ) ) {
+        category_name = $(this).children().attr('id');
+        $("#request").slideDown( "slow" );
+        $("#categories").slideUp( "slow" );
+        $("#request_category").val(category_name);
+        console.log($(this).children().attr('id'));
+        $('.category_avatar').addClass('fa-'+ category_name);
+      } else {
+        $( "#request" ).slideUp();
+      }
+    });
+  <% end %>
+<% end %>
