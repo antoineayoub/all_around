@@ -1,0 +1,51 @@
+.category_select {
+  background: $red;
+  color: white;
+  line-height: 130px;
+  width: 130px;
+  border-radius: 50%;
+  font-size: 40px;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+}
+.category_select:hover {
+  background: darken($red, 20%);
+  .category {
+    text-decoration: none;
+  }
+}
+.category:hover {
+  .arabic {
+    font-size: 35px;
+    text-decoration: none;
+  }
+  a {
+    text-decoration: none;
+  }
+}
+
+.arabic {
+  color: #EE5F5B;
+  font-size: 30px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.french {
+  color: #C9C9C9;
+  font-size: 20px;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+
+.french-header {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background: #535353;
+  color: white;
+  line-height: 60px;
+}
+.arabic-header {
+  font-size: 25px;
+  font-weight: bold;
+}
