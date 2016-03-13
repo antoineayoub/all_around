@@ -1,11 +1,11 @@
 class MessagesController < ApplicationController
   def create
-    @selected_request = Request.find(params[:request_id])
+    @selected_conversation = Request.find(params[:request_id])
     @message = Message.new(message_params)
     @message.user = current_user
-    @message.request = @selected_request
+    @message.request = @selected_conversation
     @message.save
-    @requests = current_user.request.includes(:messages).order("messages.created_at DESC")
+    @requests = current_user.conversations.includes(:messages).order("messages.created_at DESC")
   end
 
   private

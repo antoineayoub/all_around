@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <div class="banner">
+        <div class="overlay">
+          <h1>WHAT YOU NEED ?</h1>
+        </div>
+        <div id="wrapper-form">
+          <%= simple_form_for(@request) do |f| %>
+            <%= f.input :content %>
+            <%= f.input :category, input_html: {value: @category}  %>
+            <%= f.button :submit %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

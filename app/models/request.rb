@@ -1,6 +1,8 @@
 class Request < ActiveRecord::Base
-  belongs_to :refugee, class_name: 'User'
-  belongs_to :volunteer, class_name: 'User'
+  CATEGORIES = ["french", "transport", "food", "health", "hotel", "welcome", "drink", "legal"]
+  belongs_to :refugee, class_name: 'User', foreign_key: :refugee_id
+  belongs_to :volunteer, class_name: 'User', foreign_key: :volunteer_id
+  validates :category, inclusion: {in: CATEGORIES}
 
   has_many :messages
 

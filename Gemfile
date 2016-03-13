@@ -19,6 +19,13 @@ gem 'autoprefixer-rails'
 
 gem "nested_form"
 
+gem 'js-routes'
+gem 'react-rails', '1.6.1'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-classnames'
+end
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'

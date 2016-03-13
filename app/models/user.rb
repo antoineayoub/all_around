@@ -11,17 +11,28 @@ class User < ActiveRecord::Base
   has_many :tickets, class_name: 'Request', foreign_key: :volunteer_id
   has_many :user_languages
 
+  validates :category, presence: true
   validates :email, presence: true, uniqueness: true
-  validates :first_name, :last_name, :age, :address, :arrival_date, :country_of_origin, presence: true
-  validates :gender, presence: true, inclusion: { in: ['male', 'female'] }
-  validates :phone, presence: true # TO DO REGEXP, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
-  validates :country_of_origin, inclusion: { in: COUNTRIES }
+  validates :first_name, :last_name, presence: true
+  validate :validate_refugee_fields, on: [:create]
+  before_create :set_category
 
   accepts_nested_attributes_for :user_languages, allow_destroy: true, reject_if: :all_blank
 
+  def validate_refugee_fields
+    if category == 'refugee'
+      errors[:base] << ("Must set age") unless age
+      errors[:base] << ("Must set gender") unless gender
+      errors[:base] << ("Must set address") unless address
+      errors[:base] << ("Must set country_of_origin") unless COUNTRIES.include?(country_of_origin)
+      errors[:base] << ("Must set arrival_date") unless ['male', 'female'].include?(arrival_date)
+      errors[:base] << ("Must set phone") unless phone #
+    end
+  end
+
   def conversations
-    Request.where(status:['pending, solved']).includes(:messages)
-                .where("refugee_id = :id OR volunteer = :id", id: id)
+    Request.where(status:['pending', 'solved']).includes(:messages)
+                .where("refugee_id = :id OR volunteer_id = :id", id: id)
                 .order("messages.created_at DESC")
   end
 
@@ -41,7 +52,7 @@ class User < ActiveRecord::Base
     unread_conversations_count > 0
   end
 
-  def one_avatar_url
-    avatar_url ? avatar_url : "http://placehold.it/64x64"
-  end
+  # def one_avatar_url
+  #   avatar_url ? avatar_url : "http://placehold.it/64x64"
+  # end
 end
