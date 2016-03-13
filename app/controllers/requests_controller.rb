@@ -1,20 +1,31 @@
 class RequestsController < ApplicationController
 
   def index
+
    @request = Request.new
    @requests = current_user.requests.select do |request|
       request.persisted?
    end
+   @requests.sort_by! &:created_at
+  end
+
+  def tickets
+    # We then listed not assigned
+    if current_user.category == "volunteer"
+      @solved_tickets = current_user.tickets.where(status: "solved")
+      @pending_tickets = current_user.tickets.where(status: "pending")
+      @not_assigned_tickets = Request.where(status: "not_assigned")
+    else
+      redirect_to requests_path
+    end
   end
 
   def create
     @request = Request.new(request_params)
     @request.refugee = current_user
     @request.status = 'not assigned'
-    raise
     if @request.save
       respond_to do |format|
-        raise
         format.html { redirect_to requests_path }
         format.js
       end

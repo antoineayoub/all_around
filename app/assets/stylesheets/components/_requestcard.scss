@@ -1,0 +1,29 @@
+.requestcard{
+  background-color: #EDEDED;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  transition: all 0.2s ease-in;
+  border-radius: 3px;
+  box-shadow: 1px 1px 3px #D5D5D5;
+  .picto{
+    flex: start;
+    // line-height: 80px;
+    // width: 80px;
+  };
+  .content{
+    text-align: left !important;
+    flex: 1;
+    margin-left: 15px;
+  }
+  .status{
+    padding-right: 15px;
+    width: 150px;
+  }
+}
+
+.requestcard:hover{
+  background-color: #D0D0D0;
+}
+

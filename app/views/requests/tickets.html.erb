@@ -1,0 +1,47 @@
+<div class="container text-center">
+  <h1>Your tickets</h1>
+  <h3>Thank you for your help !</h3>
+  <div class="tabs">
+    <a class="tab active" data-target="#not_assigned_tickets">
+      <h3><%=@not_assigned_tickets.count%></h3>
+      <p>Tickets waiting for an answer</p>
+    </a>
+    <a class="tab" data-target="#pending_tickets">
+      <h3><%=@pending_tickets.count%></h3>
+      <p>Pending tickets</p>
+    </a>
+    <a class="tab" data-target="#solved_tickets">
+      <h3> <%=@solved_tickets.count%> </h3>
+      <p>Solved tickets</p>
+    </a>
+  </div>
+  <div class="tab-content" id="not_assigned_tickets">
+    <div class="row">
+      <div class="col-xs-12">
+        <% @not_assigned_tickets.each do |ticket|%>
+        <!-- Partial to be called  -->
+        <%= render 'shared/requestcard', request: ticket %>
+        <%end%>
+      </div>
+    </div>
+  </div>
+  <div class="tab-content hidden" id="pending_tickets">
+    <div class="row">
+      <div class="col-xs-12">
+        <% @pending_tickets.each do |ticket|%>
+        <!-- Partial to be called  -->
+        <%end%>
+      </div>
+    </div>
+  </div>
+  <div class="tab-content hidden" id="solved_tickets">
+    <div class="row">
+      <div class="col-xs-12">
+        <% @solved_tickets.each do |ticket|%>
+        <!-- Partial to be called  -->
+        <%end%>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,12 +1,16 @@
 <%= render 'categories' %>
-<div id="post" class="btn btn-primary">Category</div>
 <div hidden id="request" class="container">
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <div id="back"><i class="fa fa-arrow-up fa-2x category_avatar"></i></div>
+    </div>
+  </div>
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <div class="form-banner">
         <div class="header-request">
           <h1>TELL US WHAT YOU NEED ?</h1>
-          <i class="fa fa-2x category_avatar"></i>
+          <i id="choose_category" class="fa fa-2x category_avatar"></i>
         </div>
         <div id="wrapper-form">
           <%= simple_form_for(@request,remote: true) do |f| %>
@@ -17,7 +21,15 @@
         </div>
         <h2><%= pluralize @requests.size, "request" %></h2>
       </div>
-      <div id="requests">
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-heading text-center">Requests' history</div>
+      <div id="requests" class="panel-body pannel-overflow">
         <% if @requests.blank? %>
           You don't ask anyhing yet.
         <% else %>
@@ -27,9 +39,9 @@
         <% end %>
       </div>
     </div>
+    </div>
   </div>
 </div>
-
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
     $('.category').on( 'click', function(){
@@ -39,10 +51,15 @@
         $("#categories").slideUp( "slow" );
         $("#request_category").val(category_name);
         console.log($(this).children().attr('id'));
-        $('.category_avatar').addClass('fa-'+ category_name);
+        $('#choose_category') .addClass('fa-'+ category_name);
       } else {
         $( "#request" ).slideUp();
       }
+    });
+
+    $('#back').on( 'click', function(){
+      $("#request").slideUp( "slow" );
+      $("#categories").slideDown( "slow" );
     });
   <% end %>
 <% end %>
