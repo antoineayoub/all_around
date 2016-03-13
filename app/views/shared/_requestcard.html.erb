@@ -10,22 +10,19 @@
     <p><%= request.status %></p>
   </div>
   <% if current_user.category == "volunteer" && request.status == "not_assigned"%>
-    <%= link_to '#' do %>
-      <div class="btn btn-primary">
-        Answer
-      </div>
+    <%= simple_form_for request do |f| %>
+      <%= f.input :status, as: :hidden, input_html: { :value => "pending" } %>
+      <%= f.button :submit, "Answer", class: "btn btn-primary" %>
     <% end %>
   <% elsif current_user.category == "volunteer" && request.status == "pending"%>
-  <%= link_to '#' do %>
-    <div class="btn btn-success">
-      Mark as solved
-    </div>
-  <% end %>
+  <%= simple_form_for request do |f| %>
+      <%= f.input :status, as: :hidden, input_html: { :value => "solved" } %>
+      <%= f.button :submit, "Mark as solved", class: "btn btn-success" %>
+    <% end %>
   <% elsif current_user.category == "refugee" && request.status == "not_assigned"%>
-    <%= link_to '#' do %>
-      <div class="btn btn-danger">
-        Cancel request
-      </div>
+    <%= simple_form_for request do |f| %>
+      <%= f.input :status, as: :hidden, input_html: { :value => "cancel" } %>
+      <%= f.button :submit, "Cancel", class: "btn btn-primary" %>
     <% end %>
   <% end %>
 <% end %>

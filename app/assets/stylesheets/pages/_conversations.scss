@@ -1,3 +1,6 @@
+.conversation-wrapper {
+  margin-top: 25px;
+}
 .conversation-link {
   width: 100%;
   max-height: 75px;
@@ -38,7 +41,7 @@
 }
 .selected,
 .selected:hover {
-  background-color: #3A5795;
+  background-color: #ce1a15; //#EE5F5B;
   color: white;
   h6,
   .date {
