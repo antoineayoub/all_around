@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     # Defines profile type at user creation => permitted params management => Devise
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password,
      :password_confirmation, :first_name, :last_name, :phone, :gender, :age,
-     :country_of_origin, :address, :arrival_date, user_languages_attributes: [:id, :language_id, :_destroy] )
+     :country_of_origin, :address, :arrival_date, :category, user_languages_attributes: [:id, :language_id, :_destroy] )
     }
   end
 
