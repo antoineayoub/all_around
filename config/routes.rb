@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  resources :requests
+  resources :requests do
+    collection do
+      get 'select_tickets', to: 'requests#tickets'
+    end
+  end
   post 'requests/:request_id/messages' => 'messages#create', as: :request_message
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
