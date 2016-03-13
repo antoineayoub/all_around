@@ -46,7 +46,7 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(request_params)
     @request.refugee = current_user
-    @request.status = 'not assigned'
+    @request.status = 'not_assigned'
     if @request.save
       respond_to do |format|
         format.html { redirect_to requests_path }

@@ -1,1 +1,7 @@
-<%= render 'shared/requestcard', request: request %>
+<% if request.status == 'not_assigned' || request.status.nil? %>
+  <%= render 'shared/requestcard', request: request %>
+<% else %>
+  <%= link_to conversations_path(request_id: request) do %>
+    <%= render 'shared/requestcard', request: request %>
+  <% end %>
+<% end %>

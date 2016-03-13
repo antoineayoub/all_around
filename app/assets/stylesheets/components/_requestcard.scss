@@ -28,3 +28,12 @@
   background-color: #fbfbfb;
 }
 
+
+.panel #requests a {
+  color: inherit;
+  text-decoration: none;
+ &:hover, &:focus, &:active {
+  color: inherit;
+  text-decoration: none;
+ }
+}
