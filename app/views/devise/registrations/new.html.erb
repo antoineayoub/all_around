@@ -10,8 +10,8 @@
       <%= f.input :first_name, required: true %>
       <%= f.input :last_name, required: true %>
       <%= f.input :phone, required: true %>
-      <%= f.input :gender, required: true %>
-      <%= f.input :age, required: true %>
+      <%= f.input :gender, required: true, collection: ["male", "female"], prompt: "Which gender?" %>
+      <%= f.input :age, required: true, collection: 20..70, prompt: "Which age?" %>
       <%= f.input :country_of_origin, collection: User::COUNTRIES, required: true, prompt: t('.select_country') %>
       <%= f.input :address, required: true %>
       <%= f.input :arrival_date, required: true %>

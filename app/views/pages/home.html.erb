@@ -10,50 +10,64 @@
     <div class="col-xs-6 col-sm-4 col-sm-offset-2 category">
       <%= link_to new_request_path(category: "french") do %>
         <i class="fa fa-graduation-cap fa-5x category_select"></i>
-        <div class="arabic">تحدث الفرنسية</div>
-        <div class="french">parler français</div>
+        <div class="arabic">تعليم</div>
+        <div class="french">éducation</div>
       <% end %>
     </div>
     <div class="col-xs-6 col-sm-4 category">
-      <i class="fa fa-bus fa-5x category_select"></i>
-      <div class="arabic">تحرك</div>
-      <div class="french">se déplacer</div>
+      <%= link_to new_request_path(category: "transport") do %>
+        <i class="fa fa-bus fa-5x category_select"></i>
+        <div class="arabic">تحرك</div>
+        <div class="french">se déplacer</div>
+      <% end %>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-6 col-sm-4 col-sm-offset-2 category">
-      <i class="fa fa-cutlery fa-5x category_select"></i>
-      <div class="arabic">أكل</div>
-      <div class="french">manger</div>
+      <%= link_to new_request_path(category: "food") do %>
+        <i class="fa fa-cutlery fa-5x category_select"></i>
+        <div class="arabic">أكل</div>
+        <div class="french">manger</div>
+      <% end %>
     </div>
     <div class="col-xs-6 col-sm-4 category">
-      <i class="fa fa-bed fa-5x category_select"></i>
-      <div class="arabic">نوم</div>
-      <div class="french">dormir</div>
+      <%= link_to new_request_path(category: "hotel") do %>
+        <i class="fa fa-bed fa-5x category_select"></i>
+        <div class="arabic">نوم</div>
+        <div class="french">dormir</div>
+      <% end %>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-6 col-sm-4 col-sm-offset-2 category">
-      <i class="fa fa-medkit fa-5x category_select"></i>
-      <div class="arabic">طبيب</div>
-      <div class="french">médecin</div>
+      <%= link_to new_request_path(category: "health") do %>
+        <i class="fa fa-medkit fa-5x category_select"></i>
+        <div class="arabic">طبيب</div>
+        <div class="french">médecin</div>
+      <% end %>
     </div>
     <div class="col-xs-6 col-sm-4 category">
-      <i class="fa fa-home fa-5x category_select"></i>
-      <div class="arabic">منزل</div>
-      <div class="french">accueil</div>
+      <%= link_to new_request_path(category: "welcome") do %>
+        <i class="fa fa-shopping-cart fa-5x category_select"></i>
+        <div class="arabic">هبة</div>
+        <div class="french">donnation</div>
+      <% end %>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-6 col-sm-4 col-sm-offset-2 category">
-      <i class="fa fa-beer fa-5x category_select"></i>
-      <div class="arabic">خروج</div>
-      <div class="french">sortir</div>
+      <%= link_to new_request_path(category: "drink") do %>
+        <i class="fa fa-futbol-o fa-5x category_select"></i>
+        <div class="arabic">ترفيه</div>
+        <div class="french">se divertir</div>
+      <% end %>
     </div>
     <div class="col-xs-6 col-sm-4 category">
-      <i class="fa fa-balance-scale fa-5x category_select"></i>
-      <div class="arabic">إداري</div>
-      <div class="french">administratif</div>
+      <%= link_to new_request_path(category: "legal") do %>
+        <i class="fa fa-balance-scale fa-5x category_select"></i>
+        <div class="arabic">إداري</div>
+        <div class="french">administratif</div>
+      <% end %>
     </div>
   </div>
 </div>
