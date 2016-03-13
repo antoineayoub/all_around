@@ -67,6 +67,7 @@ class RequestsController < ApplicationController
     @request.update(request_params)
 
       if params[:request][:status] == 'pending'
+        @request.volunteer = current_user
         @first_message = Message.create(request: @request, user: current_user, content: "Hi #{@refugee_name}, I'm taking your request, I'll be back to you soon.")
       end
     if @request.save
