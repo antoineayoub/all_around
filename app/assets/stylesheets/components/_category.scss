@@ -1,15 +1,27 @@
 .category_select {
-  background: $red;
+  background: $green;
   color: white;
-  line-height: 130px;
-  width: 130px;
+  line-height: 80px;
+  width: 80px;
   border-radius: 50%;
   font-size: 40px;
   margin-bottom: 10px;
   transition: all 0.3s ease;
 }
+
+.category_avatar{
+  background: $green;
+  color: white;
+  line-height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  font-size: 20px;
+  margin-bottom: 5px;
+  transition: all 0.3s ease;
+  text-align: center;
+}
 .category_select:hover {
-  background: darken($red, 20%);
+  background: darken($green, 20%);
   .category {
     text-decoration: none;
   }
@@ -25,7 +37,7 @@
 }
 
 .arabic {
-  color: #EE5F5B;
+  color: $green;
   font-size: 30px;
   font-weight: bold;
   transition: all 0.3s ease;
