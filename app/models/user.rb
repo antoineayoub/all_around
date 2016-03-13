@@ -14,8 +14,8 @@ class User < ActiveRecord::Base
   validates :category, presence: true
   validates :email, presence: true, uniqueness: true
   validates :first_name, :last_name, presence: true
-  validate :validate_refugee_fields, on: [:create]
-  before_create :set_category
+#  validate :validate_refugee_fields, on: [:create]
+
 
   accepts_nested_attributes_for :user_languages, allow_destroy: true, reject_if: :all_blank
 
