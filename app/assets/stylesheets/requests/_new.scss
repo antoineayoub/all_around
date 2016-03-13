@@ -22,3 +22,21 @@
   width: 100%;
   margin-top: 100px;
 }
+
+.nav-name{
+  font-size: 20px;
+  text-decoration: none;
+  color: $green;
+  :hover{
+    text-decoration: none;
+     color: $green;
+  }
+}
+.navbar-wagon{
+a{
+  text-decoration: none;
+}
+a:hover{
+  text-decoration: none;
+}
+}

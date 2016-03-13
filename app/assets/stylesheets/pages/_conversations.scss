@@ -41,7 +41,7 @@
 }
 .selected,
 .selected:hover {
-  background-color: #ce1a15; //#EE5F5B;
+  background-color: darken($green, 10%);
   color: white;
   h6,
   .date {
@@ -196,9 +196,9 @@
     color: white;
   }
   .btn-send {
-    background-color: #3A5795;
+    background-color: $green;
     &:hover {
-      background-color: #1B316C;
+      background-color: darken($green, 20%);
     }
   }
   .btn-stop {

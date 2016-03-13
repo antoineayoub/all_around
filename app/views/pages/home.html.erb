@@ -3,7 +3,7 @@
     <!-- <h1><%#= t('.tagline', default: 'TAG LINE') %></h1>
     <p><%#= t('.value_proposition', default: 'This is our value proposition') %></p> -->
 
-    <%= link_to new_user_session_path(category:'refugee'), class: "btn btn-danger btn-lg" do%>
+    <%= link_to new_user_session_path(category:'refugee'), class: "btn btn-success btn-lg" do%>
       <p class='btn-text'><%= t('.onboarding_refugee', default: 'Ask a question') %></p>
       <i class="fa fa-question-circle"></i>
 
@@ -11,7 +11,7 @@
 
     <h1><%= t('.tagline', default: 'All-Around') %></h1>
     <p> OR</p>
-    <%= link_to new_user_session_path(category:'volunteer'), class: "btn btn-danger btn-lg" do %>
+    <%= link_to new_user_session_path(category:'volunteer'), class: "btn btn-success btn-lg" do %>
       <p class='btn-text'><%= t('.onboarding_volunteer', default: 'Volunteer to help') %></p>
       <i class="fa fa-info-circle"></i>
     <%end%>

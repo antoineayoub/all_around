@@ -15,7 +15,8 @@ user2 = User.create!(email:"max@volunteering.org", password:"12345678", first_na
 user3 = User.create!(email:"antoine@techfugee.org", password:"12345678", first_name:"Antoine", last_name:"Ayoub", phone:"06 00 00 00 00", gender:"male", age: 28, country_of_origin: "Syria", address: "32 rue du Chateau d'eau 75019 Paris", arrival_date: Time.now, category:"refugee")
 
 user3.requests.create!(content:"I am looking for a doctor", status:"not_assigned", category:"medkit")
-conv_solved = user3.requests.create!(content: "Where can I learn French?", status: "solved", category:"graduation-cap", volunteer: user1)
+conv_solved1 = user3.requests.create!(content: "Where can I learn French?", status: "solved", category:"graduation-cap", volunteer: user1)
 user3.requests.create!(content:"Where can I do sport with other persons from Syria?", status:"not_assigned", category:"futbol-o")
-user3.requests.create!(content:"What is the first administrative process to follow?", status:"solved", category:"balance-scale", volunteer: user2)
-Message.create(content: 'Hi, I am going to treat your request soon', request: conv_solved, user: user1)
+conv_solved2 = user3.requests.create!(content:"What is the first administrative process to follow?", status:"pending", category:"balance-scale", volunteer: user2)
+Message.create(content: 'Hi, I am going to treat your request soon', request: conv_solved1, user: user1)
+Message.create(content: 'Hi, I am going to treat your request soon', request: conv_solved2, user: user2)
