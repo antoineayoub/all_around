@@ -20,13 +20,12 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :user_languages, allow_destroy: true, reject_if: :all_blank
 
   def validate_specific_fields
-    raise
     if category == 'refugee'
       errors[:base] << "Must set age" unless age
       errors[:base] << "Must set gender" unless gender
       errors[:base] << "Must set address" unless address
       errors[:base] << "Must set country_of_origin" unless COUNTRIES.include?(country_of_origin)
-      errors[:base] << "Must set arrival_date" unless ['male', 'female'].include?(arrival_date)
+      # errors[:base] << "Must set arrival_date" unless ['male', 'female'].include?(arrival_date)
       errors[:base] << "Must set phone" unless phone #
     end
   end

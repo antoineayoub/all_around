@@ -64,10 +64,12 @@ class RequestsController < ApplicationController
   def update
     @request = Request.find(params[:id])
     @refugee_name = @request.refugee.first_name
-    if @request.update(request_params)
+    @request.update(request_params)
+      binding.pry
       if params[:request][:status] == 'pending'
         @first_message = Message.create(request: @request, user: current_user, content: "Hi #{@refugee_name}, I'm taking your request, I'll be back to you soon.")
       end
+    if @request.save
       redirect_to conversations_path
     else
       render :index, flash: "Error when updating #{@refugee_name}'s request!"
