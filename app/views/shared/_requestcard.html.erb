@@ -23,7 +23,6 @@
     <%= simple_form_for request do |f| %>
       <%= f.input :status, as: :hidden, input_html: { :value => "cancel" } %>
       <%= f.button :submit, "Cancel", class: "btn btn-primary" %>
-      <% raise %>
     <% end %>
   <% end %>
 <% end %>
