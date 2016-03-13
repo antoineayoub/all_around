@@ -1,5 +1,4 @@
 class RequestsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:new]
 
   def index
     if current_user.category == "volunteer"
@@ -24,6 +23,7 @@ class RequestsController < ApplicationController
     if @request.save
       redirect_to requests_path
     else
+      @category = params[:request][:category]
       render :new
     end
   end

@@ -13,4 +13,5 @@ class ApplicationController < ActionController::Base
      :country_of_origin, :address, :arrival_date, user_languages_attributes: [:id, :language_id, :_destroy] )
     }
   end
+
 end
