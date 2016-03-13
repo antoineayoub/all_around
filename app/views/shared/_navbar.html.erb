@@ -17,7 +17,7 @@
         </button>
       </form>
         <!-- Notification -->
-        <%= link_to requests_path, class: "navbar-wagon-item navbar-wagon-link" do %>
+        <%= link_to conversations_path, class: "navbar-wagon-item navbar-wagon-link" do %>
           <div class="badge-container">
             <i class="fa fa-envelope-o"></i>
             <% if user_signed_in? && current_user.unread_conversations? %>

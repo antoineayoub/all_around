@@ -1,0 +1,6 @@
+<%= content_for :title do %>
+  <%= current_user.unread_conversations_count > 0 ? "(#{@unread_conversations_count}) Inbox" : "Inbox" %>
+<% end %>
+
+<%= react_component "Inbox",
+    render(template: 'requests/conversations.json.jbuilder') %>
